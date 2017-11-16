@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DataService} from './data.service';
+
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  constructor(private dataService:DataService){
+
+  }
+
+  someProperty:string = '';
+
+  // Run when component loads
+  ngOnInit(){
+    console.log(this.dataService.cars);
+
+    this.someProperty = this.dataService.myData();
+    
+  }
   
   // Basic properties
   myObject = {
