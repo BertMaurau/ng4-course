@@ -38,4 +38,15 @@ export class AppComponent {
   myEvent(event){
     console.log(event);
   }
+
+  // Styling
+
+  title2Class = 'red-title'
+
+  title3Class = true
+
+  titleClasses = {
+    'red-title':true,
+    'large-title':true
+  }
 }
