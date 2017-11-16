@@ -7,13 +7,16 @@ import { MyNewComponentComponent } from './my-new-component/my-new-component.com
 
 import { DataService} from './data.service';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
     MyNewComponentComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]

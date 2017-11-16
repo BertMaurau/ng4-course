@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { DataService} from './data.service';
-
+import { DataService } from './data.service';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-root',
@@ -11,35 +11,61 @@ import { DataService} from './data.service';
     `,
   */
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('myAwesomeAnimation', [
+
+      state('small', style({
+        transform: 'scale(1)'
+      })),
+      state('large', style({
+        transform: 'scale(1.2)'
+      })),
+
+      // <=> both directions
+      // Single animation
+      /*
+      transition('small <=> large', animate('300ms ease-in', style({
+        transform: 'translateY(40px)'
+      })))
+      */
+      
+      //Sequence based animation
+      transition('small <=> large', animate('300ms ease-in', keyframes([
+        style({opacity: 0, transform:'translateY(-75px)', offset: 0}),
+        style({opacity: 1, transform:'translateY(35px)', offset: .5}),
+        style({opacity: 1, transform:'translateY(0)', offset: 1})
+      ])))
+    ])
+  ]
 })
 export class AppComponent {
 
-  constructor(private dataService:DataService){
+  constructor(private dataService: DataService) {
 
   }
 
-  someProperty:string = '';
+  someProperty: string = '';
 
   // Run when component loads
-  ngOnInit(){
+  ngOnInit() {
     console.log(this.dataService.cars);
 
     this.someProperty = this.dataService.myData();
-    
+
   }
-  
+
   // Basic properties
   myObject = {
     gender: 'male',
     age: 33,
-    location:'USA'
+    location: 'USA'
   }
 
   title = 'app';
 
   // For loop
-  myArr = ['him','hers','yours'];
+  myArr = ['him', 'hers', 'yours'];
 
   // Conditions
   smth = 'something';
@@ -51,7 +77,7 @@ export class AppComponent {
 
   //events
 
-  myEvent(event){
+  myEvent(event) {
     console.log(event);
   }
 
@@ -62,8 +88,8 @@ export class AppComponent {
   title3Class = true
 
   titleClasses = {
-    'red-title':true,
-    'large-title':true
+    'red-title': true,
+    'large-title': true
   }
 
 
@@ -74,7 +100,13 @@ export class AppComponent {
 
   titleStyles = {
     'color': 'blue',
-    'font-size':'0.4em'
+    'font-size': '0.4em'
   }
+
+  // Animations
+  state:string = 'small'
+  animateMe(){
+    this.state = (this.state === 'small' ? 'large' : 'small')
+  }  
 
 }

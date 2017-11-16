@@ -11,9 +11,6 @@
 </div>
 
 
-<p>{{ someProperty }}</p>
-
-
 <!-- Iteration -->
 <ul>
     <li *ngFor="let arr of myArr">
@@ -64,3 +61,10 @@
 
 
 <h2 [ngStyle]="titleStyles">Hello</h2>
+
+<!-- Services -->
+<p>{{ someProperty }}</p>
+
+
+<!-- Animations -->
+<p [@myAwesomeAnimation]="state" (click)="animateMe()">Click me for animation</p>
