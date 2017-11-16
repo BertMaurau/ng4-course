@@ -49,4 +49,16 @@ export class AppComponent {
     'red-title':true,
     'large-title':true
   }
+
+
+  // Style Binding
+  titleStyle = 'green'
+
+  title2Style = true
+
+  titleStyles = {
+    'color': 'blue',
+    'font-size':'0.4em'
+  }
+
 }
